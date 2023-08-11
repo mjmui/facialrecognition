@@ -17,18 +17,18 @@ font=cv2.FONT_HERSHEY_COMPLEX
 model = load_model('keras_model.h5')
 
 
-def get_className(classNo):
-	if classNo==0:
+def get_className(classIndex):
+	if classIndex==0:
 		return "BALDONADO"
-	elif classNo==1:
+	elif classIndex==1:
 		return "COMETA"
-	elif classNo==2:
+	elif classIndex==2:
 		return "MUI"
-	elif classNo==3:
+	elif classIndex==3:
 		return "MURO"
-	elif classNo==4:
+	elif classIndex==4:
 		return "RODRIGUEZ"
-	elif classNo==5:
+	elif classIndex==5:
 		return "SANTOS"
 	else:
 		return "UNKNOWN"
@@ -41,7 +41,6 @@ while True:
 		img=cv2.resize(crop_img, (224,224))
 		img=img.reshape(1, 224, 224, 3)
 		prediction=model.predict(img)
-		# classIndex=model.predict_classes(img)
 		classIndex=np.argmax(prediction,axis=-1)
 		probabilityValue=np.amax(prediction)
 		if classIndex==0:
@@ -49,6 +48,30 @@ while True:
 			cv2.rectangle(imgOrignal, (x,y-40),(x+w, y), (0,255,0),-2)
 			cv2.putText(imgOrignal, str(get_className(classIndex)),(x,y-10), font, 0.75, (255,255,255),1, cv2.LINE_AA)
 		elif classIndex==1:
+			cv2.rectangle(imgOrignal,(x,y),(x+w,y+h),(0,255,0),2)
+			cv2.rectangle(imgOrignal, (x,y-40),(x+w, y), (0,255,0),-2)
+			cv2.putText(imgOrignal, str(get_className(classIndex)),(x,y-10), font, 0.75, (255,255,255),1, cv2.LINE_AA)
+		elif classIndex==2:
+			cv2.rectangle(imgOrignal,(x,y),(x+w,y+h),(0,255,0),2)
+			cv2.rectangle(imgOrignal, (x,y-40),(x+w, y), (0,255,0),-2)
+			cv2.putText(imgOrignal, str(get_className(classIndex)),(x,y-10), font, 0.75, (255,255,255),1, cv2.LINE_AA)
+		elif classIndex==3:
+			cv2.rectangle(imgOrignal,(x,y),(x+w,y+h),(0,255,0),2)
+			cv2.rectangle(imgOrignal, (x,y-40),(x+w, y), (0,255,0),-2)
+			cv2.putText(imgOrignal, str(get_className(classIndex)),(x,y-10), font, 0.75, (255,255,255),1, cv2.LINE_AA)
+		elif classIndex==4:
+			cv2.rectangle(imgOrignal,(x,y),(x+w,y+h),(0,255,0),2)
+			cv2.rectangle(imgOrignal, (x,y-40),(x+w, y), (0,255,0),-2)
+			cv2.putText(imgOrignal, str(get_className(classIndex)),(x,y-10), font, 0.75, (255,255,255),1, cv2.LINE_AA)
+		elif classIndex==5:
+			cv2.rectangle(imgOrignal,(x,y),(x+w,y+h),(0,255,0),2)
+			cv2.rectangle(imgOrignal, (x,y-40),(x+w, y), (0,255,0),-2)
+			cv2.putText(imgOrignal, str(get_className(classIndex)),(x,y-10), font, 0.75, (255,255,255),1, cv2.LINE_AA)
+		elif classIndex==6:
+			cv2.rectangle(imgOrignal,(x,y),(x+w,y+h),(0,255,0),2)
+			cv2.rectangle(imgOrignal, (x,y-40),(x+w, y), (0,255,0),-2)
+			cv2.putText(imgOrignal, str(get_className(classIndex)),(x,y-10), font, 0.75, (255,255,255),1, cv2.LINE_AA)
+		else:
 			cv2.rectangle(imgOrignal,(x,y),(x+w,y+h),(0,255,0),2)
 			cv2.rectangle(imgOrignal, (x,y-40),(x+w, y), (0,255,0),-2)
 			cv2.putText(imgOrignal, str(get_className(classIndex)),(x,y-10), font, 0.75, (255,255,255),1, cv2.LINE_AA)
